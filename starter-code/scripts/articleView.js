@@ -9,6 +9,16 @@ articleView.populateFilters = function() {
     var template = Handlebars.compile(source);
     var compiled = template(blogArticle);
     $('#author-filter').append(compiled);
+
+
+    if ($('#category-filter option[value="' + blogArticle.category + '"]').length === 0) {
+      source = $('#category-option-template').html();
+      template = Handlebars.compile(source);
+      compiled = template(blogArticle);
+      $('#category-filter').append(compiled);
+    }
+
+
   });
   // $('article').each(function() {
     // if (!$(this).hasClass('template')) {
@@ -22,9 +32,9 @@ articleView.populateFilters = function() {
     //     $('#category-filter').append(optionTag);
     //   }
     // }
-
-
   // });
+
+
 };
 
 articleView.handleAuthorFilter = function() {
